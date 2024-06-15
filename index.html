@@ -3,36 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Embed</title>
+    <title>AniWave by mehrab.com</title>
     <style>
         html, body {
             height: 100%;
             margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f0f0f0;
         }
         .iframe-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            position: relative;
         }
         .iframe-container iframe {
             width: 100%;
             height: 100%;
             border: none;
+            display: none; /* Hide iframe initially */
+        }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 2s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
-        <iframe src="https://aniwave.to" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
+        <div class="loader"></div>
+        <iframe src="https://aniwave.to/home/" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
     </div>
     <script>
-        // Debugging script to check if iframe is loaded
         const iframe = document.querySelector('iframe');
+        const loader = document.querySelector('.loader');
+
         iframe.onload = function() {
-            console.log('Iframe loaded successfully');
+            loader.style.display = 'none';
+            iframe.style.display = 'block';
         };
+
         iframe.onerror = function() {
-            console.error('Error loading iframe');
+            loader.style.display = 'none';
+            alert('Error loading iframe');
         };
     </script>
 </body>
