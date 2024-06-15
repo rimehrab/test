@@ -8,29 +8,32 @@
         html, body {
             height: 100%;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0; /* Light grey background to see the iframe */
         }
         .iframe-container {
-            position: relative;
             width: 100%;
             height: 100%;
+            position: relative;
         }
         .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
-            border: 2px solid #ccc; /* Border to visualize the iframe */
+            border: none;
         }
     </style>
 </head>
 <body>
     <div class="iframe-container">
-        <iframe src="https://www.youtube.com" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
+        <iframe src="https://aniwave.to" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
     </div>
+    <script>
+        // Debugging script to check if iframe is loaded
+        const iframe = document.querySelector('iframe');
+        iframe.onload = function() {
+            console.log('Iframe loaded successfully');
+        };
+        iframe.onerror = function() {
+            console.error('Error loading iframe');
+        };
+    </script>
 </body>
 </html>
