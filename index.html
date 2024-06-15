@@ -6,26 +6,29 @@
 <title>Embedded Website</title>
 <style>
     body {
+        margin: 0;
         font-family: Arial, sans-serif; /* Example: Use the same font as mehrabbck.com */
         background-color: #f0f0f0; /* Example: Match background color */
     }
     .embedded-container {
+        position: relative;
         width: 100%;
-        max-width: 1200px; /* Adjust as needed */
-        margin: 0 auto;
-        background-color: #ffffff; /* Example: Match background color */
-        box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Example: Apply a shadow */
+        height: 100vh; /* Fill the entire viewport height */
+        overflow: hidden; /* Hide any overflow content */
     }
     .embedded-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 600px; /* Adjust height based on content */
+        height: 100%;
         border: none; /* Remove default iframe border */
     }
 </style>
 </head>
 <body>
     <div class="embedded-container">
-        <iframe src="https://mehrab.com" title="Embedded Content"></iframe>
+        <iframe src="https://aniwave.to" title="Embedded Content"></iframe>
     </div>
 </body>
 </html>
