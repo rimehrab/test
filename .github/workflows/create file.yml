@@ -1,0 +1,35 @@
+name: Create File Workflow
+
+on:
+  schedule:
+    - cron: '* * * * *'  # This will run the workflow every minute
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create a file with incrementing name
+        run: |
+          # Create the /tmp directory if it doesn't exist
+          mkdir -p /tmp/myfiles
+          
+          # Get the next file number
+          if [ -f /tmp/myfiles/count.txt ]; then
+            count=$(< /tmp/myfiles/count.txt)
+            next_count=$((count + 1))
+          else
+            next_count=1
+          fi
+
+          # Create the file with the next number as the filename
+          touch /tmp/myfiles/$next_count
+
+          # Update the count file
+          echo $next_count > /tmp/myfiles/count.txt
+
+          # List files in the directory for verification
+          ls -l /tmp/myfiles
